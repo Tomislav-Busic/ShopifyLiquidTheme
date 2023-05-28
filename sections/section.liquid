@@ -1,22 +1,22 @@
 <section>
   <div class="container">
-    {% for item in items %}
+    {% for block in section.blocks %}
       <div class="item">
         <div class="image">
           <div class="image-place">
-            {% if item.image contains '/' %}
-              {% assign images = item.image | split: '/' %}
+            {% if block.image contains '/' %}
+              {% assign images = block.image | split: '/' %}
               {% for image in images %}
                 <img src="{{ image | asset_url }}" alt="{{ item.alt }}" />
               {% endfor %}
             {% else %}
-              <img src="{{  item.image | asset_url }}"alt="{{ item.alt }}" />
+              <img src="{{  block.image | asset_url }}"alt="{{ block.alt }}" />
             {% endif %}
           </div>
         </div>
         <div class="text-container">
-          <h1>{{ item.title }}</h1>
-          <p>{{ item.content }}</p>
+          <h1>{{ block.title }}</h1>
+          <p>{{ block.content }}</p>
         </div>
       </div>
     {% endfor %}
@@ -101,30 +101,3 @@
     ]
   }
 {% endschema %}
-
-{% assign items = [
- {
- image: ["daimond.png"],
- alt: "Premium Wine Jigsaw Puzzlessss",
- title: "Premium wine jigsaw puzzles",
- content: "Our passion became our business: the world of wine and the search for serenity."
- },
- {
- image: ["bird.png", "hand.png"],
- alt: "Crafted with passion & attention to details",
- title: "Crafted with passion & attention to details",
- content: "Each of our jigsaw puzzles is first drawn by hand and every piece is then carefully reviewed one by one."
- },
- {
- image: ["mob.png"],
- alt: "Play your way into the world of wine",
- title: "Play your way into the world of wine",
- content: "Put your phone down for a while, relax and make a puzzle. Learn about regions, grapes, aromas, food pairing and so much more."
- },
- {
- image: ["pla.png"],
- alt: "Sustainability is in our DNA",
- title: "Sustainability is in our DNA",
- content: "For every item sold we will plant one tree and make a donation to improve global access to safe drinking water."
- }
- ] %}
